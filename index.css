@@ -1,0 +1,183 @@
+@import url("./font.css");
+
+/* BASE COLOR */
+:root {
+  --white: #ffffff;
+  --gray-100: #dfdfdf;
+  --gray-200: #c0c0c0;
+  --gray-300: #808080;
+  --gray-900: #0a0a0a;
+}
+
+:root {
+  /* BORDER */
+  --border-width: 1px;
+  --border-raised-outer: inset -1px -1px var(--gray-900),
+    inset 1px 1px var(--white);
+  --border-raised-inner: inset -2px -2px var(--gray-300),
+    inset 2px 2px var(--gray-100);
+  --border-sunken-outer: inset -1px -1px var(--white),
+    inset 1px 1px var(--gray-900);
+  --border-sunken-inner: inset -2px -2px var(--gray-100),
+    inset 2px 2px var(--gray-300);
+
+  /* BOX SHADOW */
+  --bar-shadow: inset -1px -1px var(--gray-900), inset 1px 1px var(--gray-100),
+    inset -2px -2px var(--gray-300), inset 2px 2px var(--white);
+  --button-shadow: var(--border-raised-outer), var(--border-raised-inner);
+}
+
+/* Style */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  font-family: "MS Sans Serif";
+}
+
+body {
+  width: 100%;
+  height: 100vh;
+  background-color: #038080;
+}
+
+/* button */
+button {
+  padding: 0 12px;
+  background-color: var(--gray-200);
+  border: none;
+  border-radius: 0;
+  box-shadow: var(--button-shadow);
+}
+
+/* icon menu */
+.icon {
+  margin: 10px;
+  cursor: pointer;
+}
+
+.icon strong {
+  display: flex;
+  flex-direction: column;
+  font-size: 1em;
+  font-weight: 500;
+  color: #c9e0df;
+}
+
+.icon:first-child strong::before {
+  content: "";
+  display: inline-block;
+  width: 50px;
+  height: 50px;
+  margin-left: 1em;
+  margin-bottom: 0.5em;
+  background-image: url(./assets/computer.png);
+  background-size: 50px 50px;
+}
+
+.icon:nth-child(2) strong::before {
+  content: "";
+  display: inline-block;
+  width: 50px;
+  height: 50px;
+  margin-left: 1em;
+  margin-bottom: 0.5em;
+  background-image: url(./assets/briefcase.png);
+  background-size: 50px 50px;
+}
+
+.icon:nth-child(3) strong::before {
+  content: "";
+  display: inline-block;
+  width: 50px;
+  height: 50px;
+  margin-left: 1em;
+  margin-bottom: 0.5em;
+  background-image: url(./assets/documents.png);
+  background-size: 50px 50px;
+}
+
+.icon:nth-child(4) strong::before {
+  content: "";
+  display: inline-block;
+  width: 50px;
+  height: 50px;
+  margin-left: 0.7em;
+  margin-bottom: 0.5em;
+  background-image: url(./assets/trash.png);
+  background-size: 50px 50px;
+}
+
+/* taskbar */
+#taskbar {
+  position: fixed;
+  bottom: 0;
+  display: flex;
+  align-items: center;
+  width: 100%;
+  height: 6vh;
+  padding: 3px;
+  background-color: #c0c0c0;
+  box-shadow: var(--bar-shadow);
+}
+
+/* #taskbar button {
+} */
+
+#taskbar button div {
+  display: flex;
+  align-items: center;
+  height: 32px;
+}
+
+#taskbar button:first-child {
+  font-size: 1.1em;
+  font-weight: bold;
+}
+
+#taskbar button:first-child div::before {
+  content: "";
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  margin-right: 0.5em;
+  background-image: url(./assets/windows.png);
+  background-size: 20px 20px;
+}
+
+#taskbar button:nth-child(2) div::before {
+  content: "";
+  display: inline-block;
+  width: 25px;
+  height: 25px;
+  margin-right: 1em;
+  background-image: url(./assets/windows_slanted.png);
+  background-size: 25px 25px;
+}
+
+#taskbar button:last-child div::before {
+  content: "";
+  display: inline-block;
+  width: 22px;
+  height: 22px;
+  background-image: url(./assets/time_date.png);
+  background-size: 22px 22px;
+  margin-right: 1em;
+}
+
+/* clock */
+button#date-time {
+  position: fixed;
+  right: 5px;
+  box-shadow: var(--border-sunken-outer), var(--border-sunken-inner);
+}
+
+.js-clock {
+  display: flex;
+  align-items: center;
+}
+
+/* clock */
+#date-time h1 {
+  font-size: 1.2em;
+  font-weight: 500;
+}
