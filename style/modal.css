@@ -1,9 +1,28 @@
-.window {
+.window-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
   display: none;
   width: 100%;
-  margin: 0 auto;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.5);
 }
 
-.clicked {
+.window {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 300px;
+  transform: translate(-50%, -50%);
+}
+
+.window-container.clicked {
   display: block;
+}
+
+/* cursor: close button */
+.window .title-bar-controls button:nth-child(3) {
+  cursor: pointer;
 }

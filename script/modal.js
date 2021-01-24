@@ -1,7 +1,6 @@
 const icons = document.querySelectorAll(".icon");
-const modal = document.querySelector(".window");
+const modal = document.querySelector(".window-container");
 const closeButton = document.querySelector(".js-close");
-console.log(closeButton);
 
 const CLICKED_CLASS = "clicked";
 
@@ -19,8 +18,15 @@ function closeModal() {
   });
 }
 
+function hideModal() {
+  window.addEventListener("click", (e) => {
+    e.target === modal && modal.classList.remove(CLICKED_CLASS);
+  });
+}
+
 function init() {
   showModal();
   closeModal();
+  hideModal();
 }
 init();
