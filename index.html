@@ -4,10 +4,11 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Win 98</title>
-    <link rel="stylesheet" href="font.css" />
+    <link rel="stylesheet" href="./style/font.css" />
     <link rel="shortcut icon" href="./assets/windows.png" type="image/x-icon" />
-    <!-- <link rel="stylesheet" href="https://unpkg.com/98.css" /> -->
-    <link rel="stylesheet" href="index.css" />
+    <link rel="stylesheet" href="https://unpkg.com/98.css" />
+    <link rel="stylesheet" href="./style/index.css" />
+    <link rel="stylesheet" href="./style/modal.css" />
   </head>
   <body>
     <!-- icon menus -->
@@ -22,6 +23,20 @@
     </div>
     <div class="icon">
       <strong>Recycle Bin</strong>
+    </div>
+    <!-- modal -->
+    <div class="window" style="width: 300px">
+      <div class="title-bar">
+        <div class="title-bar-text">Window 98</div>
+        <div class="title-bar-controls">
+          <button aria-label="Minimize"></button>
+          <button aria-label="Maximize"></button>
+          <button aria-label="Close" class="js-close"></button>
+        </div>
+      </div>
+      <div class="window-body">
+        <p>Not supported yet!</p>
+      </div>
     </div>
     <!-- taskbar -->
     <div id="taskbar">
@@ -40,6 +55,7 @@
     </div>
 
     <script src="./index.js"></script>
-    <script src="./clock.js"></script>
+    <script src="./script/clock.js"></script>
+    <script src="./script/modal.js"></script>
   </body>
 </html>
