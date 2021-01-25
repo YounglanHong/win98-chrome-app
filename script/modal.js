@@ -1,5 +1,5 @@
 const icons = document.querySelectorAll(".icon");
-const modal = document.querySelector(".window-container");
+const modal = document.querySelector(".modal-container");
 const closeButton = document.querySelector(".js-close");
 
 const CLICKED_CLASS = "clicked";

@@ -1,4 +1,5 @@
 @import url("../style/font.css");
+/* ref: https://docs.microsoft.com/en-us/previous-versions/windows/desktop/bb226804(v=vs.85) */
 
 /* BASE COLOR */
 :root {
@@ -49,12 +50,31 @@ button {
   box-shadow: var(--button-shadow);
 }
 
-/* icon menu */
-.icon {
-  margin: 10px;
+/* window */
+.window {
+  /* centering window */
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 300px;
+  transform: translate(-50%, -50%);
+}
+
+/* cursor: close button */
+.window .title-bar-controls button:nth-child(3) {
   cursor: pointer;
 }
 
+/* icons */
+.icon {
+  margin: 10px;
+}
+
+.icon[class*="icon"] {
+  cursor: pointer;
+}
+
+.todo-icon strong,
 .icon strong {
   display: flex;
   flex-direction: column;
@@ -119,9 +139,6 @@ button {
   background-color: #c0c0c0;
   box-shadow: var(--bar-shadow);
 }
-
-/* #taskbar button {
-} */
 
 #taskbar button div {
   display: flex;
