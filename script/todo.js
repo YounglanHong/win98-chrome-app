@@ -34,9 +34,9 @@ function saveTodos() {
 function deleteTodos(e) {
   /* Delete it from HTML */
   const targetNode = e?.target.parentNode;
-  todoLists.removeChild(targetNode);
+  targetNode && todoLists.removeChild(targetNode);
   /*  Delete todo from localStroage */
-  const targetId = targetNode.id;
+  const targetId = targetNode?.id;
   const filteredTodoList = todoListArr.filter((todo) => {
     return todo.id !== parseInt(targetId);
   });
