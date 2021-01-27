@@ -201,6 +201,13 @@ button {
   margin-right: 1em;
 }
 
+/* running-app */
+.taskbar-running-app button#run-app {
+  height: 32px;
+  font-size: 1em;
+  font-weight: normal;
+}
+
 /* clock */
 button#date-time {
   position: fixed;

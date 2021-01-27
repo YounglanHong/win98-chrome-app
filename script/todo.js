@@ -3,45 +3,70 @@ const todoIcon = document.querySelector(".todo-icon"),
   closeTodoButton = document.querySelector(".js-close_todo");
 
 const todoInput = document.querySelector("#todo-input"),
-  todoLists = document.querySelector(".todo-lists"),
-  deleteTodoBtn = document.querySelector(".deleteBtn");
+  todoLists = document.querySelector(".todo-lists");
 
 const OPEN_TODO = "open";
 const TODOS_STORAGE = "todos"; /* localStorage key */
 let todoListArr = []; /* localStorage value */
 
-/* Open & Close todo window */
+/* running app */
+const runningApp = document.querySelector(".taskbar-running-app");
+
+function addTodoApp() {
+  const todoApp = document.createElement("button");
+  todoApp.setAttribute("id", "run-app");
+  todoApp.innerText = "🗒 Todo";
+  runningApp.appendChild(todoApp);
+}
+
+function deleteTodoApp() {
+  const todoApp_created = document.querySelector("#run-app");
+  todoApp_created && runningApp.removeChild(todoApp_created);
+}
+
+// /* Open & Close todo window */
 function openTodo() {
   todoIcon.addEventListener("click", () => {
     todoContainer.classList.add(OPEN_TODO);
+    addTodoApp();
   });
 }
 
 function closeTodo() {
   closeTodoButton.addEventListener("click", () => {
     todoContainer.classList.remove(OPEN_TODO);
+    deleteTodoApp();
   });
+}
+
+function closeTodoBlur() {
   window.addEventListener("click", (e) => {
-    e.target === todoContainer && todoContainer.classList.remove(OPEN_TODO);
+    if (e.target === todoContainer) {
+      todoContainer.classList.remove(OPEN_TODO);
+      deleteTodoApp();
+    }
   });
 }
 
 /* Todo List */
 function saveTodos() {
+  // console.log(todoListArr);
   localStorage.setItem(TODOS_STORAGE, JSON.stringify(todoListArr));
 }
 
 function deleteTodos(e) {
   /* Delete it from HTML */
   const targetNode = e?.target.parentNode;
-  targetNode && todoLists.removeChild(targetNode);
   /*  Delete todo from localStroage */
-  const targetId = targetNode?.id;
-  const filteredTodoList = todoListArr.filter((todo) => {
-    return todo.id !== parseInt(targetId);
-  });
-  todoListArr = filteredTodoList; /* Replace */
-  saveTodos(); /* Resave */
+  if (targetNode) {
+    todoLists.removeChild(targetNode);
+    const targetId = targetNode.id;
+    const filteredTodoList = todoListArr.filter((todo) => {
+      return todo.id !== parseInt(targetId);
+    });
+    todoListArr = filteredTodoList; /* Replace todos */
+    saveTodos(); /* Resave todos */
+  }
 }
 
 function addTodos(todoItem) {
@@ -74,7 +99,7 @@ function addTodos(todoItem) {
     item: todoItem,
   };
   todoListArr.push(todoListObj);
-  saveTodos();
+  saveTodos(); /* Save todos */
 }
 
 function getTodos() {
@@ -107,6 +132,7 @@ function loadTodos() {
 function init() {
   openTodo();
   closeTodo();
+  closeTodoBlur();
   loadTodos();
   handleTodoInput();
   deleteTodos();
