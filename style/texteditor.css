@@ -1,0 +1,73 @@
+/* Text Editor Icon */
+#editor {
+  margin: 15px;
+  cursor: pointer;
+}
+
+#editor strong::before {
+  content: "";
+  display: inline-block;
+  width: 50px;
+  height: 50px;
+  margin-left: 0.2em;
+  margin-bottom: 0.5em;
+  background-image: url(../assets/notepad.png);
+  background-size: 50px 50px;
+}
+
+.window.editor {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 500px;
+  transform: translate(-50%, -50%);
+}
+
+/* Text Editor */
+.editor-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: none;
+  width: 100%;
+  height: 100vh;
+}
+
+.editor-container.open {
+  display: block;
+}
+
+.lists {
+  display: flex;
+  align-items: flex-start;
+  padding: 0;
+}
+
+.header-menu li {
+  margin-right: 7px;
+}
+
+.editor-menu button {
+  min-width: 10px;
+}
+
+.button-group {
+  margin-right: 10px;
+}
+
+/* font-size */
+.button-group:first-child select {
+  min-width: 15px;
+}
+
+.button-group:nth-child(2) select {
+  min-width: 10px;
+}
+
+#text-field {
+  width: 477px;
+  height: 300px;
+  background-color: white;
+}

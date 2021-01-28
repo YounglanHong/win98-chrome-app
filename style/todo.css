@@ -1,10 +1,10 @@
 /* Todo Icon */
-.todo-icon {
+#todo {
   margin: 15px;
   cursor: pointer;
 }
 
-.todo-icon strong::before {
+#todo strong::before {
   content: "";
   display: inline-block;
   width: 50px;

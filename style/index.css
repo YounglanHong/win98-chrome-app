@@ -41,6 +41,14 @@ body {
   background-color: #038080;
 }
 
+li {
+  list-style: none;
+}
+
+hr {
+  margin: 4px 0;
+}
+
 /* button */
 button {
   padding: 0 12px;
@@ -51,7 +59,7 @@ button {
 }
 
 /* window */
-.window {
+.window:not(.editor) {
   /* centering window */
   position: absolute;
   top: 50%;

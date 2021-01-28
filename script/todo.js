@@ -1,6 +1,6 @@
-const todoIcon = document.querySelector(".todo-icon"),
+const todoIcon = document.querySelector("#todo"),
   todoContainer = document.querySelector(".todo-container"),
-  closeTodoButton = document.querySelector(".js-close_todo");
+  closeTodoButton = todoContainer.querySelector(".js-close_todo");
 
 const todoInput = document.querySelector("#todo-input"),
   todoLists = document.querySelector(".todo-lists");
@@ -10,21 +10,21 @@ const TODOS_STORAGE = "todos"; /* localStorage key */
 let todoListArr = []; /* localStorage value */
 
 /* running app */
-const runningApp = document.querySelector(".taskbar-running-app");
+const runningApp_todo = document.querySelector(".taskbar-running-app");
 
 function addTodoApp() {
   const todoApp = document.createElement("button");
   todoApp.setAttribute("id", "run-app");
   todoApp.innerText = "🗒 Todo";
-  runningApp.appendChild(todoApp);
+  runningApp_todo.appendChild(todoApp);
 }
 
 function deleteTodoApp() {
   const todoApp_created = document.querySelector("#run-app");
-  todoApp_created && runningApp.removeChild(todoApp_created);
+  todoApp_created && runningApp_todo.removeChild(todoApp_created);
 }
 
-// /* Open & Close todo window */
+/* Open & Close todo window */
 function openTodo() {
   todoIcon.addEventListener("click", () => {
     todoContainer.classList.add(OPEN_TODO);
