@@ -11,6 +11,7 @@
     <link rel="stylesheet" href="./style/modal.css" />
     <link rel="stylesheet" href="./style/todo.css" />
     <link rel="stylesheet" href="./style/texteditor.css" />
+    <link rel="stylesheet" href="./style/paint.css" />
     <link
       rel="stylesheet"
       href="https://use.fontawesome.com/releases/v5.15.2/css/all.css"
@@ -20,25 +21,29 @@
   </head>
   <body>
     <!-- icon menus -->
-    <div class="icon">
-      <strong>My Computer</strong>
+    <div class="icon-group">
+      <div class="icon">
+        <strong>My Computer</strong>
+      </div>
+      <div class="icon">
+        <strong>My Briefcase</strong>
+      </div>
+      <div class="icon">
+        <strong>My Documents</strong>
+      </div>
+      <div class="icon">
+        <strong>Recycle Bin</strong>
+      </div>
+      <div id="todo" class="icon todo">
+        <strong>ToDo List</strong>
+      </div>
+      <div id="editor" class="icon editor">
+        <strong>Text Editor</strong>
+      </div>
+      <div id="paint" class="icon paint">
+        <strong>Paint</strong>
+      </div>
     </div>
-    <div class="icon">
-      <strong>My Briefcase</strong>
-    </div>
-    <div class="icon">
-      <strong>My Documents</strong>
-    </div>
-    <div class="icon">
-      <strong>Recycle Bin</strong>
-    </div>
-    <div id="todo" class="icon todo">
-      <strong>ToDo List</strong>
-    </div>
-    <div id="editor" class="icon editor">
-      <strong>Text Editor</strong>
-    </div>
-
     <!-- startup -->
     <!-- <div class="startup">
       <img
@@ -48,7 +53,12 @@
     </div> -->
 
     <!-- modal -->
-    <section class="modal-container">
+    <section
+      role="dialog"
+      aria-modal="true"
+      aria-hidden="true"
+      class="modal-container"
+    >
       <div class="window">
         <div class="title-bar">
           <div class="title-bar-text" aria-label="Window Modal">Window 98</div>
@@ -92,7 +102,7 @@
 
     <!-- text editor -->
     <section class="editor-container">
-      <div class="window editor">
+      <div class="window editor-app">
         <div class="title-bar">
           <div class="title-bar-text" aria-label="Text Editor">
             Script - WordPad
@@ -167,6 +177,26 @@
         </div>
       </div>
     </section>
+    <!-- paint -->
+    <section class="paint-container">
+      <div class="window paint-app">
+        <div class="title-bar">
+          <div class="title-bar-text" aria-label="Paint">Paint</div>
+          <div class="title-bar-controls">
+            <button aria-label="Minimize"></button>
+            <button aria-label="Maximize"></button>
+            <button aria-label="Close" class="js-close_paint"></button>
+          </div>
+        </div>
+        <div class="window-body">
+          <div class="field-row">
+            <canvas id="paint-canvas" class="canvas"></canvas>
+          </div>
+          <div id="paint-colors" class="field-row colors"></div>
+          <div id="paint-colors" class="field-row colors"></div>
+        </div>
+      </div>
+    </section>
 
     <!-- taskbar -->
     <div id="taskbar">
@@ -190,5 +220,6 @@
     <script src="./script/modal.js"></script>
     <script src="./script/todo.js"></script>
     <script src="./script/texteditor.js"></script>
+    <script src="./script/paint.js"></script>
   </body>
 </html>
