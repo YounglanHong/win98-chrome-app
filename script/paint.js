@@ -2,13 +2,12 @@ const paintIcon = document.querySelector("#paint"),
   paintContainer = document.querySelector(".paint-container"),
   closePaintButton = paintContainer.querySelector(".js-close_paint");
 
-const paintColors = document.querySelectorAll("#paint-colors"),
+const paintCanvas = document.querySelector("#paint-canvas"),
+  paintColors = document.querySelectorAll("#paint-colors"),
   paintTools = document.querySelector("#paint-tools");
 
-console.log(paintIcon);
-console.log(paintColors);
-
-paintColors[0].innerHTML = `
+function addPaintColors() {
+  paintColors[0].innerHTML = `
   <span class="color" aria-label="black"></span>
   <span class="color" aria-label="dark grey"></span>
   <span class="color" aria-label="dark red"></span>
@@ -19,7 +18,7 @@ paintColors[0].innerHTML = `
   <span class="color" aria-label="purple"></span>
 `;
 
-paintColors[1].innerHTML = `
+  paintColors[1].innerHTML = `
   <span class="color" aria-label="white"></span>
   <span class="color" aria-label="light grey"></span>
   <span class="color" aria-label="red"></span>
@@ -29,8 +28,10 @@ paintColors[1].innerHTML = `
   <span class="color" aria-label="blue"></span>
   <span class="color" aria-label="pink"></span>
 `;
+}
 
-paintTools.innerHTML = `
+function addPaintTools() {
+  paintTools.innerHTML = `
   <button aria-label="save"><i class="fas fa-save"></i></i></button>
   <button aria-label="open"><i class="fas fa-folder-open"></i></button>
   <button aria-label="share"><i class="fas fa-share-square"></i></button>
@@ -38,8 +39,8 @@ paintTools.innerHTML = `
   <button aria-label="line"><i class="fas fa-signature"></i></button>
   <button aria-label="rectangle"><i class="far fa-square"></i></i></button>
   <button aria-label="circle"><i class="far fa-circle"></i></button>
-
 `;
+}
 
 const OPEN_PAINT = "open_paint";
 
@@ -82,10 +83,44 @@ function closePaintBlur() {
   });
 }
 
+/* Painting canvas events */
+let isPainting = false;
+
+function stopPainting() {
+  painting = false;
+}
+
+function startPainting() {
+  isPainting = true;
+}
+
+function onMouseMove(e) {
+  const x = e.offsetX;
+  const y = e.offsetY;
+  console.log(x, y);
+}
+
+function onMouseDown(e) {
+  startPainting();
+}
+
+function onMouseUp(e) {
+  stopPainting();
+}
+
+if (paintCanvas) {
+  paintCanvas.addEventListener("mousemove", onMouseMove);
+  paintCanvas.addEventListener("mousedown", onMouseDown);
+  paintCanvas.addEventListener("mouseup", onMouseUp);
+  paintCanvas.addEventListener("mouseleave", stopPainting);
+}
+
 function init() {
   openPaint();
   closePaint();
   closePaintBlur();
+  addPaintColors();
+  addPaintTools();
 }
 
 init();
