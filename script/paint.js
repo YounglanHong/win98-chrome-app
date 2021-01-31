@@ -2,10 +2,20 @@ const paintIcon = document.querySelector("#paint"),
   paintContainer = document.querySelector(".paint-container"),
   closePaintButton = paintContainer.querySelector(".js-close_paint");
 
-const paintCanvas = document.querySelector("#paint-canvas"),
-  paintColors = document.querySelectorAll("#paint-colors"),
+const paintColors = document.querySelectorAll("#paint-colors"),
   paintTools = document.querySelector("#paint-tools");
 
+const paintCanvas = document.querySelector("#paint-canvas"),
+  ctx = paintCanvas.getContext("2d"); // Context variable
+
+/* Painting canvas style(default) */
+paintCanvas.width = 350;
+paintCanvas.height = 350;
+
+ctx.strokeStyle = "#000000";
+ctx.lineWidth = 1.5;
+
+/* Add color & tools */
 function addPaintColors() {
   paintColors[0].innerHTML = `
   <span class="color" aria-label="black"></span>
@@ -86,32 +96,40 @@ function closePaintBlur() {
 /* Painting canvas events */
 let isPainting = false;
 
-function stopPainting() {
-  painting = false;
-}
-
 function startPainting() {
   isPainting = true;
+}
+
+function stopPainting() {
+  isPainting = false;
 }
 
 function onMouseMove(e) {
   const x = e.offsetX;
   const y = e.offsetY;
-  console.log(x, y);
+  if (!isPainting) {
+    console.log("path", x, y);
+    ctx.beginPath();
+    ctx.moveTo(x, y);
+  } else {
+    console.log("line", x, y);
+    ctx.lineTo(x, y);
+    ctx.stroke();
+  }
 }
 
 function onMouseDown(e) {
-  startPainting();
+  isPainting = true;
 }
 
 function onMouseUp(e) {
-  stopPainting();
+  painting = false;
 }
 
 if (paintCanvas) {
   paintCanvas.addEventListener("mousemove", onMouseMove);
-  paintCanvas.addEventListener("mousedown", onMouseDown);
-  paintCanvas.addEventListener("mouseup", onMouseUp);
+  paintCanvas.addEventListener("mousedown", startPainting);
+  paintCanvas.addEventListener("mouseup", stopPainting);
   paintCanvas.addEventListener("mouseleave", stopPainting);
 }
 
