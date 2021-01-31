@@ -1,4 +1,4 @@
-const icons = document.querySelectorAll(".icon:not(.todo, .editor)");
+const icons = document.querySelectorAll(".icon:not(.todo, .editor, .paint)");
 const modal = document.querySelector(".modal-container");
 const closeButton = document.querySelector(".js-close");
 

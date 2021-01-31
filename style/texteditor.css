@@ -9,18 +9,14 @@
   display: inline-block;
   width: 50px;
   height: 50px;
-  margin-left: 0.2em;
+  margin-left: 0;
   margin-bottom: 0.5em;
   background-image: url(../assets/notepad.png);
   background-size: 50px 50px;
 }
 
-.window.editor {
-  position: absolute;
-  top: 50%;
-  left: 50%;
+.window.editor-app {
   width: 500px;
-  transform: translate(-50%, -50%);
 }
 
 /* Text Editor */

@@ -6,7 +6,7 @@ const textField = editorContainer.querySelector("#text-field"),
   cmdButton = Array.from(editorContainer.getElementsByTagName("button"));
 
 const cmdSelect = Array.from(editorContainer.getElementsByTagName("select"));
-console.log(cmdSelect);
+// console.log(cmdSelect);
 
 const OPEN_EDITOR = "open";
 
