@@ -1,0 +1,88 @@
+/* Paint: Colors */
+:root {
+  --paint-black: #000000;
+  --paint-white: #fefefe;
+  --paint-dark-grey: #686868;
+  --paint-light-grey: #afafaf;
+  --paint-dark-red: #680003;
+  --paint-red: #fb010a;
+  --paint-olive: #6a6906;
+  --paint-yellow: #feff0b;
+  --paint-light-green: #26ff04;
+  --paint-green: #afafaf;
+  /* --paint-dark-green: #072d2c; */
+  --paint-blue: #1301fe;
+  --paint-green-blue: #106868;
+  --paint-light-blue: #22fdff;
+  --paint-navy: #030068;
+  --paint-purple: #660265;
+  --paint-pink: #fc00ff;
+  --paint-brown: #672b06;
+  --paint-orange: #ff622b;
+}
+
+/* idx[0] */
+.color[aria-label="black"] {
+  background-color: var(--paint-black);
+}
+
+.color[aria-label="dark grey"] {
+  background-color: var(--paint-dark-grey);
+}
+
+.color[aria-label="dark red"] {
+  background-color: var(--paint-dark-red);
+}
+
+.color[aria-label="olive"] {
+  background-color: var(--paint-olive);
+}
+
+.color[aria-label="green"] {
+  background-color: var(--paint-green);
+}
+
+.color[aria-label="green blue"] {
+  background-color: var(--paint-green-blue);
+}
+
+.color[aria-label="navy"] {
+  background-color: var(--paint-navy);
+}
+
+.color[aria-label="purple"] {
+  background-color: var(--paint-purple);
+}
+
+/* idx[1] */
+.color[aria-label="white"] {
+  background-color: var(--paint-white);
+}
+
+.color[aria-label="light grey"] {
+  background-color: var(--paint-light-grey);
+}
+
+.color[aria-label="red"] {
+  background-color: var(--paint-red);
+}
+
+.color[aria-label="yellow"] {
+  background-color: var(--paint-yellow);
+}
+
+.color[aria-label="light green"] {
+  background-color: var(--paint-light-green);
+}
+
+.color[aria-label="light blue"] {
+  background-color: var(--paint-light-blue);
+}
+
+.color[aria-label="blue"] {
+  background-color: var(--paint-blue);
+}
+
+.color[aria-label="pink"] {
+  background-color: var(--paint-pink);
+}
