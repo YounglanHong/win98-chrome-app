@@ -199,11 +199,59 @@
           </ul>
           <hr />
           <div class="field-row">
-            <div id="paint-tools" class="tools"></div>
-            <canvas id="paint-canvas" class="canvas"></canvas>
+            <div id="paint-tools" class="tools" aria-label="Paint Tools">
+              <button aria-label="save">
+                <i class="fas fa-save"></i>
+              </button>
+              <button aria-label="open">
+                <i class="fas fa-folder-open"></i>
+              </button>
+              <button aria-label="share">
+                <i class="fas fa-share-square"></i>
+              </button>
+              <button aria-label="brush">
+                <i class="fas fa-paint-brush"></i>
+              </button>
+              <button aria-label="line">
+                <i class="fas fa-signature"></i>
+              </button>
+              <button aria-label="rectangle">
+                <i class="far fa-square"></i>
+              </button>
+              <button aria-label="circle">
+                <i class="far fa-circle"></i>
+              </button>
+            </div>
+            <canvas
+              id="paint-canvas"
+              class="canvas"
+              aria-label="Paint Canvas"
+            ></canvas>
           </div>
-          <div id="paint-colors" class="field-row colors"></div>
-          <div id="paint-colors" class="field-row colors"></div>
+          <div
+            id="paint-colors"
+            class="field-row colors"
+            aria-label="Paint Colors"
+          >
+            <span class="color" aria-label="black"></span>
+            <span class="color" aria-label="dark grey"></span>
+            <span class="color" aria-label="dark red"></span>
+            <span class="color" aria-label="olive"></span>
+            <span class="color" aria-label="green"></span>
+            <span class="color" aria-label="green blue"></span>
+            <span class="color" aria-label="navy"></span>
+            <span class="color" aria-label="purple"></span>
+          </div>
+          <div id="paint-colors" class="field-row colors">
+            <span class="color" aria-label="white"></span>
+            <span class="color" aria-label="light grey"></span>
+            <span class="color" aria-label="red"></span>
+            <span class="color" aria-label="yellow"></span>
+            <span class="color" aria-label="light green"></span>
+            <span class="color" aria-label="light blue"></span>
+            <span class="color" aria-label="blue"></span>
+            <span class="color" aria-label="pink"></span>
+          </div>
         </div>
       </div>
     </section>

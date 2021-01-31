@@ -2,8 +2,7 @@ const paintIcon = document.querySelector("#paint"),
   paintContainer = document.querySelector(".paint-container"),
   closePaintButton = paintContainer.querySelector(".js-close_paint");
 
-const paintColors = document.querySelectorAll("#paint-colors"),
-  paintTools = document.querySelector("#paint-tools");
+const paintColor = Array.from(document.getElementsByClassName("color"));
 
 const paintCanvas = document.querySelector("#paint-canvas"),
   ctx = paintCanvas.getContext("2d"); // Context variable
@@ -14,43 +13,6 @@ paintCanvas.height = 350;
 
 ctx.strokeStyle = "#000000";
 ctx.lineWidth = 1.5;
-
-/* Add color & tools */
-function addPaintColors() {
-  paintColors[0].innerHTML = `
-  <span class="color" aria-label="black"></span>
-  <span class="color" aria-label="dark grey"></span>
-  <span class="color" aria-label="dark red"></span>
-  <span class="color" aria-label="olive"></span>
-  <span class="color" aria-label="green"></span>
-  <span class="color" aria-label="green blue"></span>
-  <span class="color" aria-label="navy"></span>
-  <span class="color" aria-label="purple"></span>
-`;
-
-  paintColors[1].innerHTML = `
-  <span class="color" aria-label="white"></span>
-  <span class="color" aria-label="light grey"></span>
-  <span class="color" aria-label="red"></span>
-  <span class="color" aria-label="yellow"></span>
-  <span class="color" aria-label="light green"></span>
-  <span class="color" aria-label="light blue"></span>
-  <span class="color" aria-label="blue"></span>
-  <span class="color" aria-label="pink"></span>
-`;
-}
-
-function addPaintTools() {
-  paintTools.innerHTML = `
-  <button aria-label="save"><i class="fas fa-save"></i></i></button>
-  <button aria-label="open"><i class="fas fa-folder-open"></i></button>
-  <button aria-label="share"><i class="fas fa-share-square"></i></button>
-  <button aria-label="brush"><i class="fas fa-paint-brush"></i></button>
-  <button aria-label="line"><i class="fas fa-signature"></i></button>
-  <button aria-label="rectangle"><i class="far fa-square"></i></i></button>
-  <button aria-label="circle"><i class="far fa-circle"></i></button>
-`;
-}
 
 const OPEN_PAINT = "open_paint";
 
@@ -108,22 +70,21 @@ function onMouseMove(e) {
   const x = e.offsetX;
   const y = e.offsetY;
   if (!isPainting) {
-    console.log("path", x, y);
+    // console.log("path", x, y);
     ctx.beginPath();
     ctx.moveTo(x, y);
   } else {
-    console.log("line", x, y);
+    // console.log("line", x, y);
     ctx.lineTo(x, y);
     ctx.stroke();
   }
 }
 
-function onMouseDown(e) {
-  isPainting = true;
-}
-
-function onMouseUp(e) {
-  painting = false;
+function handleColorChange(color) {
+  // console.log(e.target.style)  // CSSStyleDeclaration
+  // console.log(e.target.style.backgrounColor)
+  // console.log(this.getAttribute("aria-label"));
+  ctx.strokeStyle = color;
 }
 
 if (paintCanvas) {
@@ -133,12 +94,18 @@ if (paintCanvas) {
   paintCanvas.addEventListener("mouseleave", stopPainting);
 }
 
+/* Change Color */
+paintColor.forEach((color) => {
+  let targetColor = window
+    .getComputedStyle(color)
+    .getPropertyValue("background-color");
+  color.addEventListener("click", () => handleColorChange(targetColor));
+});
+
 function init() {
   openPaint();
   closePaint();
   closePaintBlur();
-  addPaintColors();
-  addPaintTools();
 }
 
 init();
