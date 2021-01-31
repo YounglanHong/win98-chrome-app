@@ -2,7 +2,9 @@ const paintIcon = document.querySelector("#paint"),
   paintContainer = document.querySelector(".paint-container"),
   closePaintButton = paintContainer.querySelector(".js-close_paint");
 
-const paintColor = Array.from(document.getElementsByClassName("color"));
+const paintColor = Array.from(document.getElementsByClassName("color")),
+  paintEraser = document.querySelector(".paint-eraser"),
+  paintEraseAll = document.querySelector(".paint-eraseAll");
 
 const paintCanvas = document.querySelector("#paint-canvas"),
   ctx = paintCanvas.getContext("2d"); // Context variable
@@ -57,34 +59,42 @@ function closePaintBlur() {
 
 /* Painting canvas events */
 let isPainting = false;
+let isErasing = false;
 
-function startPainting() {
+function startErasing() {
+  isErasing = true;
+}
+
+function stopErasing() {
+  isErasing = false;
+}
+
+function startPainting(e) {
   isPainting = true;
+  isErasing = false;
 }
 
 function stopPainting() {
+  if (isErasing) {
+    stopErasing();
+  }
   isPainting = false;
 }
 
 function onMouseMove(e) {
   const x = e.offsetX;
   const y = e.offsetY;
-  if (!isPainting) {
-    // console.log("path", x, y);
-    ctx.beginPath();
-    ctx.moveTo(x, y);
+  if (isErasing) {
+    erasePainting(x, y);
   } else {
-    // console.log("line", x, y);
-    ctx.lineTo(x, y);
-    ctx.stroke();
+    if (!isPainting) {
+      ctx.beginPath();
+      ctx.moveTo(x, y);
+    } else {
+      ctx.lineTo(x, y);
+      ctx.stroke();
+    }
   }
-}
-
-function handleColorChange(color) {
-  // console.log(e.target.style)  // CSSStyleDeclaration
-  // console.log(e.target.style.backgrounColor)
-  // console.log(this.getAttribute("aria-label"));
-  ctx.strokeStyle = color;
 }
 
 if (paintCanvas) {
@@ -95,12 +105,34 @@ if (paintCanvas) {
 }
 
 /* Change Color */
+function handleColorChange(color) {
+  // console.log(e.target.style)  // CSSStyleDeclaration
+  // console.log(e.target.style.backgrounColor)
+  // console.log(this.getAttribute("aria-label"));
+  ctx.strokeStyle = color;
+}
+
 paintColor.forEach((color) => {
   let targetColor = window
     .getComputedStyle(color)
     .getPropertyValue("background-color");
-  color.addEventListener("click", () => handleColorChange(targetColor));
+  color.addEventListener("click", () => {
+    stopErasing();
+    handleColorChange(targetColor);
+  });
 });
+
+/* Erase(all) Painting */
+function erasePainting(x, y) {
+  ctx.clearRect(x, y, 30, 30);
+}
+
+function eraseAllPainting() {
+  ctx.clearRect(0, 0, 350, 350);
+}
+
+paintEraser.addEventListener("click", startErasing);
+paintEraseAll.addEventListener("click", eraseAllPainting);
 
 function init() {
   openPaint();
