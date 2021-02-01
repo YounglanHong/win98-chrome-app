@@ -6,6 +6,8 @@ const paintColor = Array.from(document.getElementsByClassName("color")),
   paintEraser = document.querySelector(".paint-eraser"),
   paintEraseAll = document.querySelector(".paint-eraseAll");
 
+const rectIcon = document.querySelector(".rectangle");
+
 const paintCanvas = document.querySelector("#paint-canvas"),
   ctx = paintCanvas.getContext("2d"); // Context variable
 
@@ -106,12 +108,35 @@ function onMouseMove(e) {
   }
 }
 
+let startX = 0,
+  startY = 0;
+let endX = 0,
+  endY = 0;
+
+function drawRectangle() {
+  // stopPainting();
+  paintCanvas.addEventListener("mousedown", (e) => {
+    startX = e.offsetX;
+    startY = e.offsetY;
+  });
+
+  paintCanvas.addEventListener("mouseup", (e) => {
+    endX = e.offsetX;
+    endY = e.offsetY;
+  });
+  ctx.beginPath();
+  ctx.rect(startX, startY, Math.abs(endX - startX), Math.abs(endY - startY));
+  ctx.stroke();
+}
+
 if (paintCanvas) {
   paintCanvas.addEventListener("mousemove", onMouseMove);
   paintCanvas.addEventListener("mousedown", startPainting);
   paintCanvas.addEventListener("mouseup", stopPainting);
   paintCanvas.addEventListener("mouseleave", stopPainting);
 }
+
+rectIcon.addEventListener("click", drawRectangle);
 
 /* Change Color */
 function handleColorChange(color) {
