@@ -30,6 +30,12 @@ function openTodo() {
     todoContainer.classList.add(OPEN_TODO);
     addTodoApp();
   });
+  todoIcon.addEventListener("keypress", (e) => {
+    if (e.code === "Enter") {
+      todoContainer.classList.add(OPEN_TODO);
+      addTodoApp();
+    }
+  });
 }
 
 function closeTodo() {

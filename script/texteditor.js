@@ -31,6 +31,12 @@ function openEditor() {
     editorContainer.classList.add(OPEN_EDITOR);
     addEditorApp();
   });
+  editorIcon.addEventListener("keypress", (e) => {
+    if (e.code === "Enter") {
+      editorContainer.classList.add(OPEN_EDITOR);
+      addEditorApp();
+    }
+  });
 }
 
 function closeEditor() {

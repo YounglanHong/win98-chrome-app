@@ -39,6 +39,12 @@ function openPaint() {
     paintContainer.classList.add(OPEN_PAINT);
     addPaintApp();
   });
+  paintIcon.addEventListener("keypress", (e) => {
+    if (e.code === "Enter") {
+      paintContainer.classList.add(OPEN_PAINT);
+      addPaintApp();
+    }
+  });
 }
 
 function closePaint() {
