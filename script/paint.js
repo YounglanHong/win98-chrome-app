@@ -36,6 +36,7 @@ function deletePaintApp() {
 /* Open & Close paint window */
 function openPaint() {
   paintIcon.addEventListener("click", () => {
+    paintIcon.classList.add(ICON_CLICKED);
     paintContainer.classList.add(OPEN_PAINT);
     addPaintApp();
   });
@@ -49,6 +50,7 @@ function openPaint() {
 
 function closePaint() {
   closePaintButton.addEventListener("click", () => {
+    paintIcon.classList.remove(ICON_CLICKED);
     paintContainer.classList.remove(OPEN_PAINT);
     deletePaintApp();
   });
@@ -57,6 +59,7 @@ function closePaint() {
 function closePaintBlur() {
   window.addEventListener("click", (e) => {
     if (e.target === paintContainer) {
+      paintIcon.classList.remove(ICON_CLICKED);
       paintContainer.classList.remove(OPEN_PAINT);
       deletePaintApp();
     }

@@ -7,6 +7,7 @@ const todoInput = document.querySelector("#todo-input"),
 
 const OPEN_TODO = "open";
 const TODOS_STORAGE = "todos"; /* localStorage key */
+const ICON_CLICKED = "icon-clicked";
 let todoListArr = []; /* localStorage value */
 
 /* running app */
@@ -27,6 +28,7 @@ function deleteTodoApp() {
 /* Open & Close todo window */
 function openTodo() {
   todoIcon.addEventListener("click", () => {
+    todoIcon.classList.add(ICON_CLICKED);
     todoContainer.classList.add(OPEN_TODO);
     addTodoApp();
   });
@@ -40,6 +42,7 @@ function openTodo() {
 
 function closeTodo() {
   closeTodoButton.addEventListener("click", () => {
+    todoIcon.classList.remove(ICON_CLICKED);
     todoContainer.classList.remove(OPEN_TODO);
     deleteTodoApp();
   });
@@ -48,6 +51,7 @@ function closeTodo() {
 function closeTodoBlur() {
   window.addEventListener("click", (e) => {
     if (e.target === todoContainer) {
+      todoIcon.classList.remove(ICON_CLICKED);
       todoContainer.classList.remove(OPEN_TODO);
       deleteTodoApp();
     }

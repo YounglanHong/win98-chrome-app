@@ -99,6 +99,10 @@ button {
   margin: 10px;
 }
 
+.icon.icon-clicked {
+  outline: none;
+}
+
 .icon[class*="icon"] {
   cursor: pointer;
 }

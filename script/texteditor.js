@@ -28,6 +28,7 @@ function deleteEditorApp() {
 /* Open & Close text editor window */
 function openEditor() {
   editorIcon.addEventListener("click", () => {
+    editorIcon.classList.add(ICON_CLICKED);
     editorContainer.classList.add(OPEN_EDITOR);
     addEditorApp();
   });
@@ -41,6 +42,7 @@ function openEditor() {
 
 function closeEditor() {
   closeEditorButton.addEventListener("click", () => {
+    editorIcon.classList.remove(ICON_CLICKED);
     editorContainer.classList.remove(OPEN_EDITOR);
     deleteEditorApp();
   });
@@ -49,6 +51,7 @@ function closeEditor() {
 function closeEditorBlur() {
   window.addEventListener("click", (e) => {
     if (e.target === editorContainer) {
+      editorIcon.classList.remove(ICON_CLICKED);
       editorContainer.classList.remove(OPEN_EDITOR);
       deleteEditorApp();
     }
