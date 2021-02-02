@@ -44,7 +44,6 @@
 
 .paint-container .header-menu {
   margin-bottom: 0.5em;
-  font-size: 1.1em;
 }
 
 .canvas {
@@ -72,4 +71,29 @@
 .tools button {
   min-width: 35px;
   width: 35px;
+}
+
+.tool.button_clicked {
+  box-shadow: var(--border-sunken-outer), var(--border-sunken-inner);
+}
+
+.tool.line {
+  background-image: url(../assets/line.png);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 2em 1.25em;
+}
+
+.tool.pencil {
+  background-image: url(../assets/pencil.png);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 2em 1.25em;
+}
+
+.tool.eraser {
+  background-image: url(../assets/eraser.png);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 1.7em 1.3em;
 }

@@ -3,10 +3,10 @@ const paintIcon = document.querySelector("#paint"),
   closePaintButton = paintContainer.querySelector(".js-close_paint");
 
 const paintColor = Array.from(document.getElementsByClassName("color")),
-  paintEraser = document.querySelector(".paint-eraser"),
-  paintEraseAll = document.querySelector(".paint-eraseAll");
+  paintTools = Array.from(document.getElementsByClassName("tool"));
 
-const rectIcon = document.querySelector(".rectangle");
+// const lineIcon = document.querySelector(".line"),
+//   eraseIcon = document.querySelector(".eraser");
 
 const paintCanvas = document.querySelector("#paint-canvas"),
   ctx = paintCanvas.getContext("2d"); // Context variable
@@ -19,6 +19,7 @@ ctx.strokeStyle = "#000000";
 ctx.lineWidth = 1.5;
 
 const OPEN_PAINT = "open_paint";
+const BUTTON_CLICKED = "button_clicked";
 
 /* running app */
 const runningApp_paint = document.querySelector(".taskbar-running-app");
@@ -68,7 +69,12 @@ function closePaintBlur() {
   });
 }
 
-/* Painting canvas events */
+/*********************************************************/
+
+/* Painting Canvas */
+
+/* Change Tools */
+let pos = {}; // (x, y) position
 let isPainting = false;
 let isErasing = false;
 
@@ -80,68 +86,84 @@ function stopErasing() {
   isErasing = false;
 }
 
-function startPainting(e) {
-  isPainting = true;
-  isErasing = false;
+function startPainting() {
+  stopErasing();
+  if (!isErasing) {
+    isPainting = true;
+  }
 }
 
 function stopPainting() {
-  if (isErasing) {
-    stopErasing();
-  }
   isPainting = false;
 }
 
-function onMouseMove(e) {
-  const x = e.offsetX;
-  const y = e.offsetY;
-  if (isErasing) {
-    erasePainting(x, y);
+function setPosition(e) {
+  pos.x = e.offsetX;
+  pos.y = e.offsetY;
+}
+
+function drawLine(e) {
+  setPosition(e);
+  const x = pos.x;
+  const y = pos.y;
+  if (!isPainting) {
+    ctx.beginPath(); // start new path
+    ctx.moveTo(x, y); // move to (x, y)
+    ctx.lineCap = "round";
   } else {
-    if (!isPainting) {
-      ctx.beginPath();
-      ctx.moveTo(x, y);
-    } else {
-      ctx.lineTo(x, y);
-      ctx.stroke();
-    }
+    ctx.lineTo(x, y); // draw line to (x, y)
+    ctx.stroke(); // render the path
   }
 }
 
-let startX = 0,
-  startY = 0;
-let endX = 0,
-  endY = 0;
-
-function drawRectangle() {
-  // stopPainting();
-  paintCanvas.addEventListener("mousedown", (e) => {
-    startX = e.offsetX;
-    startY = e.offsetY;
-  });
-
-  paintCanvas.addEventListener("mouseup", (e) => {
-    endX = e.offsetX;
-    endY = e.offsetY;
-  });
-  ctx.beginPath();
-  ctx.rect(startX, startY, Math.abs(endX - startX), Math.abs(endY - startY));
-  ctx.stroke();
+/* Erase(all) Painting */
+function eraseDrawing(e) {
+  if (isErasing) {
+    setPosition(e);
+    ctx.clearRect(pos.x, pos.y, 30, 30);
+  }
 }
 
+// function eraseAll() {
+//   if(isErasing) {
+//     ctx.clearRect(0, 0, 350, 350);
+//   }
+// }
+
+function draw(tool) {
+  paintCanvas.addEventListener("mousemove", (e) => {
+    switch (tool) {
+      case "line":
+        drawLine(e);
+        break;
+      case "rect":
+        drawRect(e);
+        break;
+      case "circle":
+        drawCircle(e);
+        break;
+      case "eraser":
+        startErasing();
+        eraseDrawing(e);
+        break;
+      default:
+        break;
+    }
+  });
+}
+
+paintTools.forEach((tool) => {
+  tool.addEventListener("click", (e) => draw(e.target.name));
+});
+
 if (paintCanvas) {
-  paintCanvas.addEventListener("mousemove", onMouseMove);
   paintCanvas.addEventListener("mousedown", startPainting);
   paintCanvas.addEventListener("mouseup", stopPainting);
   paintCanvas.addEventListener("mouseleave", stopPainting);
 }
 
-rectIcon.addEventListener("click", drawRectangle);
-
-/* Change Color */
+/* Change Colors */
 function handleColorChange(color) {
-  // console.log(e.target.style)  // CSSStyleDeclaration
-  // console.log(e.target.style.backgrounColor)
   // console.log(this.getAttribute("aria-label"));
   ctx.strokeStyle = color;
 }
@@ -155,18 +177,6 @@ paintColor.forEach((color) => {
     handleColorChange(targetColor);
   });
 });
-
-/* Erase(all) Painting */
-function erasePainting(x, y) {
-  ctx.clearRect(x, y, 30, 30);
-}
-
-function eraseAllPainting() {
-  ctx.clearRect(0, 0, 350, 350);
-}
-
-paintEraser.addEventListener("click", startErasing);
-paintEraseAll.addEventListener("click", eraseAllPainting);
 
 function init() {
   openPaint();
