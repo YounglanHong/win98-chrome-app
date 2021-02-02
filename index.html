@@ -200,33 +200,20 @@
           <hr />
           <div class="field-row">
             <div id="paint-tools" class="tools" aria-label="Paint Tools">
-              <button aria-label="save">
-                <i class="fas fa-save"></i>
-              </button>
-              <button aria-label="open">
-                <i class="fas fa-folder-open"></i>
-              </button>
-              <button aria-label="share">
-                <i class="fas fa-share-square"></i>
-              </button>
-              <button aria-label="brush">
-                <i class="fas fa-paint-brush"></i>
-              </button>
-              <button aria-label="line">
-                <i class="fas fa-signature"></i>
-              </button>
-              <button aria-label="eraser" class="paint-eraser">
-                <i class="fas fa-eraser"></i>
-              </button>
-              <button aria-label="rectangle" class="tool rectangle">
-                <i class="far fa-square"></i>
-              </button>
-              <button aria-label="circle" class="tool circle">
-                <i class="far fa-circle"></i>
-              </button>
-              <button aria-label="erase all" class="paint-eraseAll">
-                <i class="fas fa-redo"></i>
-              </button>
+              <button aria-label="save" class="tool save"></button>
+              <button aria-label="open" class="tool open"></button>
+              <button aria-label="share" class="tool share"></button>
+              <button aria-label="brush" class="tool brush"></button>
+              <button aria-label="line" class="tool line" name="line"></button>
+              <button aria-label="pencil" class="tool pencil"></button>
+              <button
+                aria-label="eraser"
+                class="tool eraser"
+                name="eraser"
+              ></button>
+              <button aria-label="rectangle" class="tool rectangle"></button>
+              <button aria-label="circle" class="tool circle"></button>
+              <button aria-label="refresh" class="tool refresh"></button>
             </div>
             <canvas
               id="paint-canvas"
