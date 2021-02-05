@@ -1,15 +1,15 @@
-const paintIcon = document.querySelector("#paint"),
-  paintContainer = document.querySelector(".paint-container"),
-  closePaintButton = paintContainer.querySelector(".js-close_paint");
+const paintIcon = document.querySelector("#paint");
+  const paintContainer = document.querySelector(".paint-container");
+  const closePaintButton = paintContainer.querySelector(".js-close_paint");
 
-const paintColor = Array.from(document.getElementsByClassName("color")),
-  paintTools = Array.from(document.getElementsByClassName("tool"));
+const paintColor = Array.from(document.getElementsByClassName("color"));
+  const paintTools = Array.from(document.getElementsByClassName("tool"));
 
 // const lineIcon = document.querySelector(".line"),
 //   eraseIcon = document.querySelector(".eraser");
 
-const paintCanvas = document.querySelector("#paint-canvas"),
-  ctx = paintCanvas.getContext("2d"); // Context variable
+const paintCanvas = document.querySelector("#paint-canvas");
+  const ctx = paintCanvas.getContext("2d"); // Context variable
 
 /* Painting canvas style(default) */
 paintCanvas.width = 350;
@@ -59,22 +59,22 @@ function closePaint() {
   });
 }
 
-function closePaintBlur() {
-  window.addEventListener("click", (e) => {
-    if (e.target === paintContainer) {
-      paintIcon.classList.remove(ICON_CLICKED);
-      paintContainer.classList.remove(OPEN_PAINT);
-      deletePaintApp();
-    }
-  });
-}
+// function closePaintBlur() {
+//   window.addEventListener("click", (e) => {
+//     if (e.target === paintContainer) {
+//       paintIcon.classList.remove(ICON_CLICKED);
+//       paintContainer.classList.remove(OPEN_PAINT);
+//       deletePaintApp();
+//     }
+//   });
+// }
 
-/*********************************************************/
+/** ****************************************************** */
 
 /* Painting Canvas */
 
 /* Change Tools */
-let pos = {}; // (x, y) position
+const pos = {}; // (x, y) position
 let isPainting = false;
 let isErasing = false;
 
@@ -104,8 +104,8 @@ function setPosition(e) {
 
 function drawLine(e) {
   setPosition(e);
-  const x = pos.x;
-  const y = pos.y;
+  const {x} = pos;
+  const {y} = pos;
   if (!isPainting) {
     ctx.beginPath(); // start new path
     ctx.moveTo(x, y); // move to (x, y)
@@ -169,7 +169,7 @@ function handleColorChange(color) {
 }
 
 paintColor.forEach((color) => {
-  let targetColor = window
+  const targetColor = window
     .getComputedStyle(color)
     .getPropertyValue("background-color");
   color.addEventListener("click", () => {
@@ -181,7 +181,7 @@ paintColor.forEach((color) => {
 function init() {
   openPaint();
   closePaint();
-  closePaintBlur();
+  // closePaintBlur();
 }
 
 init();

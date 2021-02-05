@@ -1,9 +1,9 @@
-const editorIcon = document.querySelector("#editor"),
-  editorContainer = document.querySelector(".editor-container"),
-  closeEditorButton = editorContainer.querySelector(".js-close_editor");
+const editorIcon = document.querySelector("#editor");
+  const editorContainer = document.querySelector(".editor-container");
+  const closeEditorButton = editorContainer.querySelector(".js-close_editor");
 
-const textField = editorContainer.querySelector("#text-field"),
-  cmdButton = Array.from(editorContainer.getElementsByTagName("button"));
+const textField = editorContainer.querySelector("#text-field");
+  const cmdButton = Array.from(editorContainer.getElementsByTagName("button"));
 
 const cmdSelect = Array.from(editorContainer.getElementsByTagName("select"));
 // console.log(cmdSelect);
@@ -48,15 +48,15 @@ function closeEditor() {
   });
 }
 
-function closeEditorBlur() {
-  window.addEventListener("click", (e) => {
-    if (e.target === editorContainer) {
-      editorIcon.classList.remove(ICON_CLICKED);
-      editorContainer.classList.remove(OPEN_EDITOR);
-      deleteEditorApp();
-    }
-  });
-}
+// function closeEditorBlur() {
+//   window.addEventListener("click", (e) => {
+//     if (e.target === editorContainer) {
+//       editorIcon.classList.remove(ICON_CLICKED);
+//       editorContainer.classList.remove(OPEN_EDITOR);
+//       deleteEditorApp();
+//     }
+//   });
+// }
 
 /* Text Field */
 function enableEditMode() {
@@ -87,7 +87,7 @@ function clickCmdOpt() {
 function init() {
   openEditor();
   closeEditor();
-  closeEditorBlur();
+  // closeEditorBlur();
   enableEditMode();
   clickCmdBtn();
   clickCmdOpt();

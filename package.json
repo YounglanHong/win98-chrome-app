@@ -1,0 +1,28 @@
+{
+  "name": "win98-chrome-app",
+  "version": "1.0.0",
+  "description": "window 98 theme app",
+  "main": "index.js",
+  "dependencies": {},
+  "devDependencies": {
+    "eslint": "^7.28.0",
+    "eslint-config-airbnb-base": "^14.2.1",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-plugin-import": "^2.23.4",
+    "eslint-plugin-prettier": "^3.4.0",
+    "prettier": "^2.3.1"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/YounglanHong/win98-chrome-app.git"
+  },
+  "author": "YounglanHong",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/YounglanHong/win98-chrome-app/issues"
+  },
+  "homepage": "https://github.com/YounglanHong/win98-chrome-app#readme"
+}

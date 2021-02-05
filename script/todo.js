@@ -1,9 +1,9 @@
-const todoIcon = document.querySelector("#todo"),
-  todoContainer = document.querySelector(".todo-container"),
-  closeTodoButton = todoContainer.querySelector(".js-close_todo");
+const todoIcon = document.querySelector("#todo");
+  const todoContainer = document.querySelector(".todo-container");
+  const closeTodoButton = todoContainer.querySelector(".js-close_todo");
 
-const todoInput = document.querySelector("#todo-input"),
-  todoLists = document.querySelector(".todo-lists");
+const todoInput = document.querySelector("#todo-input");
+  const todoLists = document.querySelector(".todo-lists");
 
 const OPEN_TODO = "open";
 const TODOS_STORAGE = "todos"; /* localStorage key */
@@ -48,15 +48,15 @@ function closeTodo() {
   });
 }
 
-function closeTodoBlur() {
-  window.addEventListener("click", (e) => {
-    if (e.target === todoContainer) {
-      todoIcon.classList.remove(ICON_CLICKED);
-      todoContainer.classList.remove(OPEN_TODO);
-      deleteTodoApp();
-    }
-  });
-}
+// function closeTodoBlur() {
+//   window.addEventListener("click", (e) => {
+//     if (e.target === todoContainer) {
+//       todoIcon.classList.remove(ICON_CLICKED);
+//       todoContainer.classList.remove(OPEN_TODO);
+//       deleteTodoApp();
+//     }
+//   });
+// }
 
 /* Todo List */
 function saveTodos() {
@@ -71,9 +71,7 @@ function deleteTodos(e) {
   if (targetNode) {
     todoLists.removeChild(targetNode);
     const targetId = targetNode.id;
-    const filteredTodoList = todoListArr.filter((todo) => {
-      return todo.id !== parseInt(targetId);
-    });
+    const filteredTodoList = todoListArr.filter((todo) => todo.id !== parseInt(targetId));
     todoListArr = filteredTodoList; /* Replace todos */
     saveTodos(); /* Resave todos */
   }
@@ -86,11 +84,11 @@ function addTodos(todoItem) {
   li.setAttribute("class", "field-row todo-list");
   li.id = newId;
 
-  let input = document.createElement("input");
+  const input = document.createElement("input");
   input.setAttribute("type", "checkbox");
   input.setAttribute("id", "todo");
 
-  let label = document.createElement("label");
+  const label = document.createElement("label");
   label.setAttribute("for", "todo");
   label.innerText = todoItem;
 
@@ -142,7 +140,7 @@ function loadTodos() {
 function init() {
   openTodo();
   closeTodo();
-  closeTodoBlur();
+  // closeTodoBlur();
   loadTodos();
   handleTodoInput();
   deleteTodos();
