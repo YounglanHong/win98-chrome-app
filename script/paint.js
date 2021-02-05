@@ -19,27 +19,28 @@ ctx.strokeStyle = "#000000";
 ctx.lineWidth = 1.5;
 
 const OPEN_PAINT = "open_paint";
-const BUTTON_CLICKED = "button_clicked";
+// const BUTTON_CLICKED = "button_clicked";
 
 /* running app */
-const runningApp_paint = document.querySelector(".taskbar-running-app");
+const runningAppPaint = document.querySelector(".taskbar-running-app");
 
 function addPaintApp() {
   const paintApp = document.createElement("button");
   paintApp.setAttribute("id", "run-app");
   paintApp.innerText = "🎨 Paint";
-  runningApp_paint.appendChild(paintApp);
+  runningAppPaint.appendChild(paintApp);
 }
 
 function deletePaintApp() {
-  const paintApp_created = document.querySelector("#run-app");
-  paintApp_created && runningApp_paint.removeChild(paintApp_created);
+  const paintAppCreated = document.querySelector("#run-app");
+  // eslint-disable-next-line no-unused-expressions
+  paintAppCreated && runningAppPaint.removeChild(paintAppCreated);
 }
 
 /* Open & Close paint window */
 function openPaint() {
   paintIcon.addEventListener("click", () => {
-    paintIcon.classList.add(ICON_CLICKED);
+    // paintIcon.classList.add(ICON_CLICKED);
     paintContainer.classList.add(OPEN_PAINT);
     addPaintApp();
   });
@@ -53,21 +54,21 @@ function openPaint() {
 
 function closePaint() {
   closePaintButton.addEventListener("click", () => {
-    paintIcon.classList.remove(ICON_CLICKED);
+    // paintIcon.classList.remove(ICON_CLICKED);
     paintContainer.classList.remove(OPEN_PAINT);
     deletePaintApp();
   });
 }
 
-// function closePaintBlur() {
-//   window.addEventListener("click", (e) => {
-//     if (e.target === paintContainer) {
-//       paintIcon.classList.remove(ICON_CLICKED);
-//       paintContainer.classList.remove(OPEN_PAINT);
-//       deletePaintApp();
-//     }
-//   });
-// }
+function closePaintBlur() {
+  window.addEventListener("click", (e) => {
+    if (e.target === paintContainer) {
+      // paintIcon.classList.remove(ICON_CLICKED);
+      paintContainer.classList.remove(OPEN_PAINT);
+      deletePaintApp();
+    }
+  });
+}
 
 /** ****************************************************** */
 
@@ -181,7 +182,7 @@ paintColor.forEach((color) => {
 function init() {
   openPaint();
   closePaint();
-  // closePaintBlur();
+  closePaintBlur();
 }
 
 init();

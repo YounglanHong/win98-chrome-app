@@ -11,18 +11,19 @@ const ICON_CLICKED = "icon-clicked";
 let todoListArr = []; /* localStorage value */
 
 /* running app */
-const runningApp_todo = document.querySelector(".taskbar-running-app");
+const runningAppTodo = document.querySelector(".taskbar-running-app");
 
 function addTodoApp() {
   const todoApp = document.createElement("button");
   todoApp.setAttribute("id", "run-app");
   todoApp.innerText = "🗒 Todo";
-  runningApp_todo.appendChild(todoApp);
+  runningAppTodo.appendChild(todoApp);
 }
 
 function deleteTodoApp() {
-  const todoApp_created = document.querySelector("#run-app");
-  todoApp_created && runningApp_todo.removeChild(todoApp_created);
+  const todoAppCreated = document.querySelector("#run-app");
+  // eslint-disable-next-line no-unused-expressions
+  todoAppCreated && runningAppTodo.removeChild(todoAppCreated);
 }
 
 /* Open & Close todo window */
@@ -48,15 +49,15 @@ function closeTodo() {
   });
 }
 
-// function closeTodoBlur() {
-//   window.addEventListener("click", (e) => {
-//     if (e.target === todoContainer) {
-//       todoIcon.classList.remove(ICON_CLICKED);
-//       todoContainer.classList.remove(OPEN_TODO);
-//       deleteTodoApp();
-//     }
-//   });
-// }
+function closeTodoBlur() {
+  window.addEventListener("click", (e) => {
+    if (e.target === todoContainer) {
+      todoIcon.classList.remove(ICON_CLICKED);
+      todoContainer.classList.remove(OPEN_TODO);
+      deleteTodoApp();
+    }
+  });
+}
 
 /* Todo List */
 function saveTodos() {
@@ -112,7 +113,6 @@ function addTodos(todoItem) {
 
 function getTodos() {
   const storedTodos = localStorage.getItem(TODOS_STORAGE);
-  console.log(storedTodos);
   if (storedTodos !== null) {
     const parsedTodos = JSON.parse(storedTodos);
     parsedTodos.forEach((todo) => {
@@ -140,7 +140,7 @@ function loadTodos() {
 function init() {
   openTodo();
   closeTodo();
-  // closeTodoBlur();
+  closeTodoBlur();
   loadTodos();
   handleTodoInput();
   deleteTodos();

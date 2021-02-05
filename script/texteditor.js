@@ -9,26 +9,28 @@ const cmdSelect = Array.from(editorContainer.getElementsByTagName("select"));
 // console.log(cmdSelect);
 
 const OPEN_EDITOR = "open";
+// const ICON_CLICKED = "icon-clicked";
 
 /* Running App */
-const runningApp_editor = document.querySelector(".taskbar-running-app");
+const runningAppEditor = document.querySelector(".taskbar-running-app");
 
 function addEditorApp() {
   const textEditorApp = document.createElement("button");
   textEditorApp.setAttribute("id", "run-app");
   textEditorApp.innerText = "⌨️ Text Editor";
-  runningApp_editor.appendChild(textEditorApp);
+  runningAppEditor.appendChild(textEditorApp);
 }
 
 function deleteEditorApp() {
-  const editorApp_created = document.querySelector("#run-app");
-  editorApp_created && runningApp_editor.removeChild(editorApp_created);
+  const editorAppCreated = document.querySelector("#run-app");
+  // eslint-disable-next-line no-unused-expressions
+  editorAppCreated && runningAppEditor.removeChild(editorAppCreated);
 }
 
 /* Open & Close text editor window */
 function openEditor() {
   editorIcon.addEventListener("click", () => {
-    editorIcon.classList.add(ICON_CLICKED);
+    // editorIcon.classList.add(ICON_CLICKED);
     editorContainer.classList.add(OPEN_EDITOR);
     addEditorApp();
   });
@@ -42,21 +44,21 @@ function openEditor() {
 
 function closeEditor() {
   closeEditorButton.addEventListener("click", () => {
-    editorIcon.classList.remove(ICON_CLICKED);
+    // editorIcon.classList.remove(ICON_CLICKED);
     editorContainer.classList.remove(OPEN_EDITOR);
     deleteEditorApp();
   });
 }
 
-// function closeEditorBlur() {
-//   window.addEventListener("click", (e) => {
-//     if (e.target === editorContainer) {
-//       editorIcon.classList.remove(ICON_CLICKED);
-//       editorContainer.classList.remove(OPEN_EDITOR);
-//       deleteEditorApp();
-//     }
-//   });
-// }
+function closeEditorBlur() {
+  window.addEventListener("click", (e) => {
+    if (e.target === editorContainer) {
+      // editorIcon.classList.remove(ICON_CLICKED);
+      editorContainer.classList.remove(OPEN_EDITOR);
+      deleteEditorApp();
+    }
+  });
+}
 
 /* Text Field */
 function enableEditMode() {
@@ -87,7 +89,7 @@ function clickCmdOpt() {
 function init() {
   openEditor();
   closeEditor();
-  // closeEditorBlur();
+  closeEditorBlur();
   enableEditMode();
   clickCmdBtn();
   clickCmdOpt();
