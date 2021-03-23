@@ -2,7 +2,8 @@ const paintIcon = document.querySelector("#paint"),
   paintContainer = document.querySelector(".paint-container"),
   closePaintButton = paintContainer.querySelector(".js-close_paint");
 
-const paintColors = document.querySelectorAll("#paint-colors");
+const paintColors = document.querySelectorAll("#paint-colors"),
+  paintTools = document.querySelector("#paint-tools");
 
 console.log(paintIcon);
 console.log(paintColors);
@@ -27,6 +28,17 @@ paintColors[1].innerHTML = `
   <span class="color" aria-label="light blue"></span>
   <span class="color" aria-label="blue"></span>
   <span class="color" aria-label="pink"></span>
+`;
+
+paintTools.innerHTML = `
+  <button aria-label="save"><i class="fas fa-save"></i></i></button>
+  <button aria-label="open"><i class="fas fa-folder-open"></i></button>
+  <button aria-label="share"><i class="fas fa-share-square"></i></button>
+  <button aria-label="brush"><i class="fas fa-paint-brush"></i></button>
+  <button aria-label="line"><i class="fas fa-signature"></i></button>
+  <button aria-label="rectangle"><i class="far fa-square"></i></i></button>
+  <button aria-label="circle"><i class="far fa-circle"></i></button>
+
 `;
 
 const OPEN_PAINT = "open_paint";

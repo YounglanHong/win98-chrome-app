@@ -19,7 +19,7 @@
 }
 
 .window.paint-app {
-  width: 500px;
+  width: 420px;
 }
 
 /* Paint */
@@ -42,6 +42,10 @@
   height: 10vh;
 }
 
+.paint-container .header-menu {
+  margin-bottom: 0.5em;
+}
+
 .canvas {
   width: 350px;
   height: 350px;
@@ -49,9 +53,22 @@
   box-shadow: var(--border-sunken-outer), var(--border-sunken-inner);
 }
 
+.colors {
+  margin-left: 47px;
+}
+
 .colors .color {
   width: 15px;
   height: 15px;
   cursor: pointer;
   box-shadow: var(--border-sunken-outer), var(--border-sunken-inner);
+}
+
+.tools {
+  width: 40px;
+}
+
+.tools button {
+  min-width: 35px;
+  width: 35px;
 }
