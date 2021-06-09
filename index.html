@@ -11,7 +11,8 @@
     <link rel="stylesheet" href="./style/modal.css" />
     <link rel="stylesheet" href="./style/todo.css" />
     <link rel="stylesheet" href="./style/texteditor.css" />
-    <link rel="stylesheet" href="./style/paint.css" />
+    <!-- <link rel="stylesheet" href="./style/paint.css" /> -->
+    <link rel="stylesheet" href="./style/paint-new.css" />
     <link
       rel="stylesheet"
       href="https://use.fontawesome.com/releases/v5.15.2/css/all.css"
@@ -177,8 +178,23 @@
         </div>
       </div>
     </section>
+
     <!-- paint -->
-    <section class="paint-container">
+    <section class="paint-container-new">
+      <div class="window paint-app-new">
+        <div class="title-bar">
+          <div class="title-bar-text" aria-label="Paint">Paint</div>
+          <div class="title-bar-controls">
+            <button aria-label="Minimize"></button>
+            <button aria-label="Maximize"></button>
+            <button aria-label="Close" class="js-close_paint"></button>
+          </div>
+        </div>
+        <div class="window-body-new"></div>
+      </div>
+    </section>
+
+    <!-- <section class="paint-container">
       <div class="window paint-app">
         <div class="title-bar">
           <div class="title-bar-text" aria-label="Paint">Paint</div>
@@ -247,7 +263,7 @@
           </div>
         </div>
       </div>
-    </section>
+    </section> -->
 
     <!-- taskbar -->
     <div id="taskbar">
@@ -271,7 +287,8 @@
     <script src="./script/modal.js"></script>
     <script src="./script/todo.js"></script>
     <script src="./script/texteditor.js"></script>
-    <script src="./script/paint.js"></script>
+    <!-- <script src="./script/paint.js"></script> -->
+    <script src="./script/paint-new.js"></script>
     <script src="./script/paint-tools.js"></script>
   </body>
 </html>
