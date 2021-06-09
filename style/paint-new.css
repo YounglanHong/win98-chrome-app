@@ -40,3 +40,38 @@
 .paint-container-new .window-body-new {
   background-color: #ffffff;
 }
+
+
+/* Paint tools */
+.tool.line {
+  background-image: url(../assets/line.png);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 2em 1.25em;
+}
+
+.tool.pencil {
+  background-image: url(../assets/pencil.png);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 2em 1.25em;
+}
+
+.tool.eraser {
+  background-image: url(../assets/eraser.png);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 1.7em 1.3em;
+}
+
+/* Paint colors */
+
+.colors {
+}
+
+.colors .color {
+  width: 15px;
+  height: 15px;
+  cursor: pointer;
+  box-shadow: var(--border-sunken-outer), var(--border-sunken-inner);
+}

@@ -99,5 +99,40 @@ if (canvas) {
   canvas.addEventListener("mouseleave", stopPainting);
 }
 
-// Append child
+// canvas paint tools
+// let toolLists = ["save", "open", "brush", "line", "pencil", "eraser", "refresh"];
+let toolLists = ["line", "pencil", "eraser"];
+
+const fieldRowOne = document.createElement("div");
+const tools = document.createElement("div")
+fieldRowOne.classList.add("field-row");
+tools.classList.add("tools");
+
+toolLists.forEach((tool) => {
+  let toolBtn = document.createElement("button");
+  toolBtn.classList.add("tool")
+  toolBtn.classList.add(tool);
+  tools.appendChild(toolBtn);
+})
+
+
+// canvas paint colors
+let colorLists = [
+  "black", "dark grey", "dark red", "olive", "green", "green blue", "navy", "purple", 
+  "white", "light grey", "red", "yellow", "light green", "light blue", "blue", "pink"];
+const fieldRowTwo = document.createElement("div");
+fieldRowTwo.classList.add("field-row", "colors");
+
+colorLists.forEach((color) => {
+  let colorSpan = document.createElement("span");
+  colorSpan.classList.add("color");
+  colorSpan.ariaLabel = color;
+  fieldRowTwo.appendChild(colorSpan);
+})
+
+
+// append child
 paintAppBody.appendChild(canvas);
+paintAppBody.appendChild(fieldRowOne);
+paintAppBody.appendChild(fieldRowTwo);
+fieldRowOne.appendChild(tools);
