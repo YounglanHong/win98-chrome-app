@@ -60,6 +60,9 @@ const ctx = canvas.getContext("2d");
 canvas.width = 600;
 canvas.height = 300;
 
+ctx.strokeStyle = "#000000";
+ctx.lineWidth = 1.5;
+
 
 let isPainting = false;
 
@@ -130,9 +133,38 @@ colorLists.forEach((color) => {
   fieldRowTwo.appendChild(colorSpan);
 })
 
-
 // append child
 paintAppBody.appendChild(canvas);
 paintAppBody.appendChild(fieldRowOne);
 paintAppBody.appendChild(fieldRowTwo);
 fieldRowOne.appendChild(tools);
+
+// get elements
+const paintColor = Array.from(document.getElementsByClassName("color")),
+  paintTools = Array.from(document.getElementsByClassName("tool"));
+
+// color change
+const handleColorChange = (color) => {
+  ctx.strokeStyle = color;
+}
+
+paintColor.forEach((color) => {
+  let targetColor = window
+    .getComputedStyle(color)
+    .getPropertyValue("background-color");
+  color.addEventListener("click", () => {
+    handleColorChange(targetColor);
+  });
+});
+
+// clear canvas
+paintTools.forEach((tool) => {
+  tool.addEventListener("click", (e) => {
+    let toolName = e.target.className;
+    if(toolName.includes("eraser")) {
+      ctx.clearRect(0, 0, 600, 300);
+    }
+  });
+});
+
+
