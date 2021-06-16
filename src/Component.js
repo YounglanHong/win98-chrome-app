@@ -9,11 +9,13 @@ export default class Component {
   initailize() {}
 
   template() {
-    return "<div></div>";
+    return "";
   }
 
+
+
   render() {
-    this.target.innerHTML = this.template();
+    this.target.innerHTML += this.template();
     this.setEvent();
   }
 
@@ -23,6 +25,6 @@ export default class Component {
   // update states
   setState(newState) {
     this.state = {...this.state, ...newState};
-    this.render();
+    // this.render();
   }
 }
