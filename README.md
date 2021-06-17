@@ -1,5 +1,10 @@
 # 🌍Window 98 Chrome App
 
+## 프로젝트 소개
+
+> [window 98](https://guidebookgallery.org/screenshots/win98)을 참고하여 HTML, CSS, 자바스크립트로 웹 어플리케이션을 만드는 프로젝트입니다. 
+
+
 ## 프로젝트 링크
 
 🔗 [win98 chrome app](https://unruffled-brahmagupta-b81ab7.netlify.app/)
