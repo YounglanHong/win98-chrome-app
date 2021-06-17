@@ -11,13 +11,13 @@
 
 ### Todo App
 
-  ![Win 98 Todo](./assets/win98_todo.png)
+  ![Win 98 Todo](./assets/win98-1.gif)
 
 - 할일 추가/ 삭제
 
 ### Text Editor
 
-  ![Win 98 TextEditor](./assets/win98_texteditor.png)
+  ![Win 98 TextEditor](./assets/win98-2.gif)
 
 - 텍스트 입력/ 삭제
 - 텍스트 크기, 스타일, 폰트, 위치 조정
