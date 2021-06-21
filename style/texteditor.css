@@ -1,20 +1,3 @@
-/* Text Editor Icon */
-#editor {
-  margin: 15px;
-  cursor: pointer;
-}
-
-#editor strong::before {
-  content: "";
-  display: inline-block;
-  width: 50px;
-  height: 50px;
-  margin-left: 0;
-  margin-bottom: 0.5em;
-  background-image: url(../assets/notepad.png);
-  background-size: 50px 50px;
-}
-
 .window.editor-app {
   width: 500px;
 }
@@ -26,13 +9,13 @@
   left: 0;
   right: 0;
   bottom: 0;
-  /* display: none; */
+  display: none;
   width: 100%;
   height: 100vh;
 }
 
 .editor-container.open {
-  /* display: block; */
+  display: block;
 }
 
 .lists {
