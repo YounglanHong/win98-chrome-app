@@ -115,7 +115,43 @@
   </body>
   ```
 
-- 모든 자바스크립트 파일을 **컴포넌트** 구조로 리팩토링 했습니다.
+- 자바스크립트 파일을 **컴포넌트** 구조로 리팩토링 했습니다.
+
+  ```js
+  // Component.js
+  export default class Component {
+    constructor(target) {
+      this.target = target; // event target
+      this.initailize();
+      this.setEvent();
+      this.render();
+    }
+
+    // 초기화
+    initailize() {}
+
+    // 뷰(마크업)
+    template() {
+      return "";
+    }
+
+    // 렌더링
+    render() {
+      this.target.innerHTML += this.template();
+      this.setEvent();
+    }
+
+    // 이벤트 함수
+    setEvent() {}
+
+    // 상태 업데이트
+    setState(newState) {
+      this.state = { ...this.state, ...newState };
+      this.render();
+    }
+  }
+  ```
+
 - ES6의 `class` 문법으로 작성해서 **컴포넌트** 코드의 사용법을 패턴화합니다.
 
   ```js
