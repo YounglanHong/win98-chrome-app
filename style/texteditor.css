@@ -1,26 +1,9 @@
-/* Text Editor Icon */
-#editor {
-  margin: 15px;
-  cursor: pointer;
-}
-
-#editor strong::before {
-  content: "";
-  display: inline-block;
-  width: 50px;
-  height: 50px;
-  margin-left: 0;
-  margin-bottom: 0.5em;
-  background-image: url(../assets/notepad.png);
-  background-size: 50px 50px;
-}
-
 .window.editor-app {
   width: 500px;
 }
 
 /* Text Editor */
-.editor-container {
+/* .editor-container {
   position: fixed;
   top: 0;
   left: 0;
@@ -33,7 +16,7 @@
 
 .editor-container.open {
   display: block;
-}
+} */
 
 .lists {
   display: flex;
