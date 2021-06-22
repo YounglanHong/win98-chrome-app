@@ -1,5 +1,3 @@
-/* eslint-disable class-methods-use-this */
-/* eslint-disable import/extensions */
 import Component from "../Component.js";
 
 export default class Todo extends Component {
@@ -15,14 +13,13 @@ export default class Todo extends Component {
   template () {
     const { data } = this.state;
     return `
-      <section class="todo-container">
       <div class="window">
         <div class="title-bar">
           <div class="title-bar-text" aria-label="Todo List">ToDo List</div>
           <div class="title-bar-controls">
             <button aria-label="Minimize"></button>
             <button aria-label="Maximize"></button>
-            <button aria-label="Close" class="js-close"></button>
+            <button aria-label="Close" class="js-close todolist"></button>
           </div>
         </div>
         <div class="window-body">
@@ -46,7 +43,6 @@ export default class Todo extends Component {
           </ul>
         </div>
       </div>
-    </section>
   `
   }
 
@@ -54,10 +50,8 @@ export default class Todo extends Component {
     const { data } = this.state;
     const TODOS_STORAGE = "todos";
 
-    
-
-    // bubbling(set every events parent only)
-    this.target.addEventListener('click', ({ target }) => {
+    // remove todos
+    this.target.addEventListener("click", ({ target }) => {
       if(target.classList.contains("delete-todo")) {
         const ul = target.parentNode.parentNode;
         const li = target.parentNode;
@@ -67,8 +61,7 @@ export default class Todo extends Component {
 
     // add todos
     const todoInput = this.target.querySelector("#todo-input");
-
-    todoInput.addEventListener('keydown', (e) => {
+    todoInput.addEventListener("keydown", (e) => {
       const { value } = e.target;
       if(e.key === "Enter") {
         this.setState({ data: [...data, { id: data.length + 1, item: value }]});

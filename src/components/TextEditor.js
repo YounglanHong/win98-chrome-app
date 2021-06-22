@@ -1,6 +1,3 @@
-/* eslint-disable no-unused-expressions */
-/* eslint-disable class-methods-use-this */
-/* eslint-disable import/extensions */
 import Component from "../Component.js";
 
 export default class TextEditor extends Component {
@@ -15,7 +12,6 @@ export default class TextEditor extends Component {
   template () {
     const { data } = this.state;
     return `
-    <section class="editor-container">
     <div class="window editor-app">
       <div class="title-bar">
         <div class="title-bar-text" aria-label="Text Editor">
@@ -24,7 +20,7 @@ export default class TextEditor extends Component {
         <div class="title-bar-controls">
           <button aria-label="Minimize"></button>
           <button aria-label="Maximize"></button>
-          <button aria-label="Close" class="js-close_editor"></button>
+          <button aria-label="Close" class="js-close texteditor"></button>
         </div>
       </div>
       <div class="window-body">
@@ -90,8 +86,6 @@ export default class TextEditor extends Component {
         <iframe id="text-field"></iframe>
       </div>
     </div>
-  </section>
-
   `
   }
 
@@ -104,8 +98,8 @@ export default class TextEditor extends Component {
 
     const execCmd = (command, arg) => {
       arg
-        ? textField.contentDocument.execCommand(command, false, arg)
-        : textField.contentDocument.execCommand(command, false, null);
+        ? textField.contentDocument?.execCommand(command, false, arg)
+        : textField.contentDocument?.execCommand(command, false, null);
     }
 
     // change options

@@ -3,7 +3,7 @@
 }
 
 /* Text Editor */
-.editor-container {
+/* .editor-container {
   position: fixed;
   top: 0;
   left: 0;
@@ -16,7 +16,7 @@
 
 .editor-container.open {
   display: block;
-}
+} */
 
 .lists {
   display: flex;
