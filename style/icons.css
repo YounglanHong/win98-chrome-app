@@ -39,33 +39,33 @@
 }
 
 .icon:first-child strong::before {
-  background-image: url(../assets/computer.png);
+  background-image: url(../assets/images/computer.png);
 }
 
 .icon:nth-child(2) strong::before {
-  background-image: url(../assets/briefcase.png);
+  background-image: url(../assets/images/briefcase.png);
 }
 
 .icon:nth-child(3) strong::before {
-  background-image: url(../assets/documents.png);
+  background-image: url(../assets/images/documents.png);
 }
 
 .icon:nth-child(4) strong::before {
-  background-image: url(../assets/trash.png);
+  background-image: url(../assets/images/trash.png);
 }
 
 .icon:nth-child(5) strong::before {
-  background-image: url(../assets/write.png);
+  background-image: url(../assets/images/write.png);
 }
 
 .icon:nth-child(6) strong::before {
   margin-left: -0.1rem;
-  background-image: url(../assets/notepad.png);
+  background-image: url(../assets/images/notepad.png);
 }
 
 .icon:nth-child(7) strong::before {
   margin-left: -0.1rem;
-  background-image: url(../assets/paint.png);
+  background-image: url(../assets/images/paint.png);
 }
 
 /* responsive */
