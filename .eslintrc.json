@@ -8,5 +8,10 @@
     "ecmaVersion": 12,
     "sourceType": "module"
   },
-  "rules": {}
+  "rules": {
+    "no-new": "off",
+    "no-console": "off",
+    "import/extensions": "off",
+    "import/prefer-default-export": "off"
+  }
 }
