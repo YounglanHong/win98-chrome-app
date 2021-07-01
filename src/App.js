@@ -1,86 +1,87 @@
-import Component from "./Component.js"
-import Startup from "./components/Startup.js"  
-import Todo from "./components/Todo.js"
-import TextEditor from "./components/TextEditor.js"
+import { $ } from "./utils/dom.js"
+import { icons } from "../assets/menu.js"
 
-export default class App extends Component {
-  initailize () {
-    this.state = { 
-      data: [
-        { id: 0, icon: "My Computer" },
-        { id: 1, icon: "My Briefcase" },
-        { id: 2, icon: "My Documents" },
-        { id: 3, icon: "Recycle Bin" },
-        { id: 4, icon: "ToDo List" },
-        { id: 5, icon: "Text Editor" },
-        { id: 6, icon: "Paint" },
-      ] 
-    };
+import TodoList from "./components/TodoList.js"
+
+
+export default function App($target) {
+  this.$target = $target
+  this.state = {
+    todos: [
+      { item: "todo0" },
+      { item: "todo1" },
+      { item: "todo2" },
+    ],
+    isRunning: ""
   }
 
-  template () {
-    const { data } = this.state;
-    return `
-      <div class="icon-group">
-      ${data.map((list, key) => `
-        <div class="icon">
-          <strong class="icon-name">${list.icon}</strong>
+  this.init = () => {
+    this.todoList = new TodoList({
+      $target,
+      initialState: this.state.todos,
+      onAdd: (newTodo) => {
+        this.setState([...this.state.todos, { item: newTodo }])
+      }
+    }) 
+  }
+  
+
+  this.setState = nextState => {
+    this.state = nextState
+
+    this.todoList.setState(this.state.todos)
+  }
+
+  this.render = () => {
+    const iconTemplate = `
+    <div class="icon-group">
+      ${icons.map(({id, icon}) => `
+        <div data-icon-id=${id} class="icon">
+          <strong class="icon-name">${icon}</strong>
         </div>
       `
-      ).join("")}
-      </div>
-      <section id="todolist" class="container"></section>
-      <section id="texteditor" class="container"></section>
-      <div class="startup"></div>
-  `
-  }
+      ).join("")
+    }
+    </div>
+    <div class="program-group">
+      <article id="todolist" class="container"></article>
+      <article id="texteditor" class="container"></article>
+    </div>
+    `
+    this.$target.innerHTML = iconTemplate
+  } 
+  // <div class="startup"></div>
 
-  didMount() {
-    const todoList = this.target.querySelector("#todolist");
-    const textEditor = this.target.querySelector("#texteditor");
-    const startUp = this.target.querySelector(".startup");
-
-    new Todo(todoList, {})
-    new TextEditor(textEditor, {})
-    new Startup(startUp, {})
-  }
-
-
-
-  setEvent() {
-    // Open app
-    const { data } = this.state;
-    const OPEN = "open";
-    const iconGroup = this.target.querySelector(".icon-group");
-    const containers = Array.from(this.target.querySelectorAll(".container"));
-  
-    iconGroup.addEventListener("click", ({target}) => {
+  this.bindEvents = () => {
+    // 프로그램 실행
+    const OPEN = "open"
+    const $programs = $(".program-group")
+    $(".icon-group").addEventListener("click", ({ target }) => {
       if(target.classList.contains("icon-name")) {
-        data.forEach(item => {
-          if(target.innerText === item.icon) {
-            const iconId = item.icon.toLowerCase().replace(" ", "");
-            containers.forEach(container => {
-              const containerId = container.id;
-              if(iconId === containerId) {
-                container.classList.add(OPEN);
-              }
-            })
+        const iconText = target.innerText.toLowerCase().replace(" ", "")
+        $programs.childNodes.forEach(program => {
+          if(iconText === program.id) {
+            program.classList.add(OPEN)
+            this.setState({ todos: [...this.state.todos], isRunning: program.id})
           }
         })
-      }     
-    })
-
-  // Close app
-  const closeBtns = Array.from(this.target.querySelectorAll(".js-close"));
-
-    closeBtns.forEach(closeBtn => {
-      closeBtn.addEventListener("click", () => {
-        containers.forEach(container => {
-          if(closeBtn.classList.contains(container.id)) {
-            container.classList.remove(OPEN);
+      }
+      this.bindEvents()
+    }, true )
+  
+    // 프로그램 닫기
+    $programs.addEventListener("click", (e) => {
+      if(e.target.classList.contains("js-close")) {
+        $programs.childNodes.forEach(program => {
+          if(program.id ===  this.state.isRunning) {
+            program.classList.remove(OPEN)
           }
         })
-      })
+      }
     })
   }
+
+  this.render()
+  this.bindEvents()
+  this.init()
 }
