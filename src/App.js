@@ -8,19 +8,39 @@ export default function App($target) {
   this.$target = $target
   this.state = {
     todos: [
-      { item: "todo0" },
-      { item: "todo1" },
-      { item: "todo2" },
+      { item: "todo0", isCompleted: false },
+      { item: "todo1", isCompleted: false },
+      { item: "todo2", isCompleted: false },
     ],
     isRunning: ""
   }
 
   this.init = () => {
+    const { todos, isRunning } = this.state
     this.todoList = new TodoList({
       $target,
-      initialState: this.state.todos,
+      initialState: todos,
       onAdd: (newTodo) => {
-        this.setState([...this.state.todos, { item: newTodo }])
+        this.setState({
+          todos: [...todos, { item: newTodo, isCompleted: false }],
+          isRunning
+        })
+      },
+      onRemove: (todoId) => {
+        const filteredTodos = todos.filter(todo => todos.indexOf(todo) !== todoId)
+        this.setState({
+          todos: filteredTodos,
+          isRunning
+        })
+      },
+      onToggleCheck: (todoId) => {
+        todos.forEach(todo => {
+          if(todos.indexOf(todo) === todoId) {
+            todos[todoId].isCompleted = !todos[todoId].isCompleted
+            this.setState(this.state)
+          }
+        })
+        
       }
     }) 
   }
@@ -30,6 +50,7 @@ export default function App($target) {
     this.state = nextState
 
     this.todoList.setState(this.state.todos)
+    // console.log(this.state)
   }
 
   this.render = () => {
