@@ -1,5 +1,6 @@
 import { $ } from "./utils/dom.js"
 import { icons } from "../assets/menu.js"
+import { storage } from "./utils/localStorage.js"
 
 import TodoList from "./components/TodoList.js"
 
@@ -7,11 +8,7 @@ import TodoList from "./components/TodoList.js"
 export default function App($target) {
   this.$target = $target
   this.state = {
-    todos: [
-      { item: "todo0", isCompleted: false },
-      { item: "todo1", isCompleted: false },
-      { item: "todo2", isCompleted: false },
-    ],
+    todos: storage.getItem('todos'),
     isRunning: ""
   }
 
@@ -50,7 +47,7 @@ export default function App($target) {
     this.state = nextState
 
     this.todoList.setState(this.state.todos)
-    // console.log(this.state)
+    storage.setItem('todos', this.state.todos)
   }
 
   this.render = () => {
