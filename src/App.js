@@ -3,6 +3,7 @@ import { icons } from "../assets/menu.js"
 import { storage } from "./utils/localStorage.js"
 
 import TodoList from "./components/TodoList.js"
+import Taskbar from "./components/Taskbar.js"
 
 
 export default function App($target) {
@@ -13,6 +14,10 @@ export default function App($target) {
   }
 
   this.init = () => {
+    this.taskbar = new Taskbar({
+      $target
+    })
+
     const { todos, isRunning } = this.state
     this.todoList = new TodoList({
       $target,
