@@ -52,4 +52,4 @@ const dragElement = (el) => {
 }
 
 document.addEventListener("DOMContentLoaded", hideStartup);
-windowElements.forEach(el => dragElement(el));
+// windowElements.forEach(el => dragElement(el));
